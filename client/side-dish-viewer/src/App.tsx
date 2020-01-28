@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'App.css';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
+import { useStore } from 'store/store';
+import { ApplicationContext } from 'store/context';
 
 const App: React.FC = () => {
-  return (
+  const store = useStore();
+
+  const onSelectNavBar = (eventKey: string) => {
+    store.dispatch({type: 'setViewMode', message: eventKey});
+  };
+
+  return (<ApplicationContext.Provider value={store}>
     <Container>
       <Row className="my-3">
         <Col>
@@ -13,7 +21,7 @@ const App: React.FC = () => {
       </Row>
       <Row>
         <Col>
-          <Nav variant="tabs" defaultActiveKey="recent">
+          <Nav variant="tabs" defaultActiveKey="recent" onSelect={onSelectNavBar}>
             <Nav.Item>
               <Nav.Link eventKey="recent">新着</Nav.Link>
             </Nav.Item>
@@ -27,6 +35,7 @@ const App: React.FC = () => {
         </Col>
       </Row>
     </Container>
+  </ApplicationContext.Provider>
   );
 }
 
