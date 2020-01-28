@@ -11,6 +11,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     store.dispatch({type: 'addLog', message: 'アプリを起動.'});
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onSelectNavBar = (eventKey: string) => {
@@ -30,7 +31,7 @@ const App: React.FC = () => {
     <Container>
       <Row className="my-3">
         <Col>
-          <h1 className="text-center">ビューアー</h1>
+          <h1 className="text-center">SideDishViewer</h1>
         </Col>
       </Row>
       <Row>
