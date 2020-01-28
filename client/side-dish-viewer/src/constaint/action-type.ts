@@ -1,1 +1,1 @@
-export type ActionType = 'setViewMode';
+export type ActionType = 'setViewMode' | 'addLog';
